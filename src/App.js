@@ -1,26 +1,18 @@
 import React from "react";
 
-import Greeting from "./Greeting";
+import Greeting from "./components/Greeting";
+import { User } from "./components/User";
+import { currentUser } from "./helpers/user";
 
 import "./App.css";
 
 function App() {
-  const h1 = React.createElement(
-    "h1",
-    {
-      className: "example-class",
-    },
-    "React.createElement example"
-  );
-
-  const myText = "Demo Text";
-
   return (
-    <div className="App">
-      <header className="App-header">
-        <h1>{myText}</h1>
-        {h1}
+    <div className="container">
+      <header className="box">
         <Greeting />
+        <User user={currentUser} title="User Component title" bio />
+        <User title="" />
       </header>
     </div>
   );
