@@ -1,20 +1,18 @@
 import PropTypes from "prop-types";
 
-import { logGroup } from "../helpers/logger";
-import { formatUser } from "../helpers/user";
-import { User as UserModel } from "../models/user.model";
+import { logGroup } from "../../helpers/logger";
+import { formatUser } from "../../helpers/user";
+import { User as UserModel } from "../../models/user.model";
 
-export const User = ({ user, title, bio }) => {
+export const User = ({ user, title }) => {
   logGroup(user, "USER COMPONENT");
 
   return (
     <>
       <div className="column">
         {title && <h1 className="title">{title}</h1>}
-        <h2 className="has-text-success">
-          User Component - {formatUser(user)}
-        </h2>
-        <p hidden={!bio}>{user.bio}</p>
+        <h2 className="has-text-success">{formatUser(user)}</h2>
+        <p>{user.bio}</p>
       </div>
     </>
   );
@@ -22,11 +20,9 @@ export const User = ({ user, title, bio }) => {
 
 User.defaultProps = {
   user: new UserModel("Missing firstName", "Missing lastName"),
-  bio: false,
 };
 
 User.propTypes = {
   title: PropTypes.string.isRequired,
-  bio: PropTypes.bool.isRequired,
   user: PropTypes.instanceOf(UserModel).isRequired,
 };
