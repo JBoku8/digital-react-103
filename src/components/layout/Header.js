@@ -1,50 +1,68 @@
-export function Header(props) {
+import { NavLink, Link } from "react-router-dom";
+
+import * as route from "../../constants/routes";
+
+export function Header() {
   return (
     <div className="columns mb-3">
       <div className="column is-full">
         <nav className="navbar" role="navigation" aria-label="main navigation">
           <div className="navbar-brand">
-            <a className="navbar-item" href="#">
+            <Link className="navbar-item" to={route.HOME_PATH}>
               <img
                 src="https://bulma.io/images/bulma-logo.png"
                 width="112"
                 height="28"
                 alt=""
               />
-            </a>
+            </Link>
 
-            <a
+            <Link
               role="button"
               className="navbar-burger"
               aria-label="menu"
               aria-expanded="false"
               data-target="navbarBasicExample"
-              href="#"
+              to={route.HOME_PATH}
             >
               <span aria-hidden="true"></span>
               <span aria-hidden="true"></span>
               <span aria-hidden="true"></span>
-            </a>
+            </Link>
           </div>
 
           <div id="navbarBasicExample" className="navbar-menu">
             <div className="navbar-start">
-              <a className="navbar-item" href="#">
+              <NavLink
+                className="navbar-item"
+                to={route.HOME_PATH}
+                activeClassName="has-background-light"
+                exact
+              >
                 Home
-              </a>
+              </NavLink>
 
-              <a className="navbar-item" href="#">
-                Documentation
-              </a>
+              <NavLink
+                className="navbar-item"
+                to={route.DOCUMENTATION_PATH}
+                activeClassName="has-background-light"
+              >
+                Protected Page
+              </NavLink>
             </div>
 
             <div className="navbar-end">
               <div className="navbar-item">
                 <div className="buttons">
-                  <a className="button is-primary">
-                    <strong>Sign up</strong>
-                  </a>
-                  <a className="button is-light">Log in</a>
+                  <NavLink
+                    className="button is-primary"
+                    to={route.REGISTER_PATH}
+                  >
+                    <strong>Register</strong>
+                  </NavLink>
+                  <NavLink className="button is-light" to={route.LOGIN_PATH}>
+                    Log in
+                  </NavLink>
                 </div>
               </div>
             </div>

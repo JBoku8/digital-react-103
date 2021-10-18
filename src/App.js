@@ -1,5 +1,6 @@
 import React from "react";
-import { Header, Footer, Content } from "./components/layout";
+import { Header, Footer } from "./components/layout";
+import { Routes } from "./Routes";
 
 import "./App.css";
 
@@ -7,7 +8,7 @@ function App() {
   return (
     <div className="container">
       <Header />
-      <Content />
+      <Routes />
       <Footer />
     </div>
   );
