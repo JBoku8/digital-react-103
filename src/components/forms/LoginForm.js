@@ -1,10 +1,10 @@
+import { useHistory } from "react-router-dom";
 import { EmailInput } from "../../atoms/EmailInput";
 import { PasswordInput } from "../../atoms/PasswordInput";
+import { DOCUMENTATION_PATH } from "../../constants/routes";
 
-export const LoginForm = (props) => {
-  //   useEffect(() => {
-  //     console.log("ყოველთვის ამოქმედებული");
-  //   });
+export const LoginForm = () => {
+  const history = useHistory();
 
   const onSubmit = (event) => {
     event.preventDefault();
@@ -16,18 +16,32 @@ export const LoginForm = (props) => {
       loginData[inputName] = value;
     }
 
-    console.log(loginData);
-
-    // AJAX
+    fetch(`${process.env.REACT_APP_API_URL}/login`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+      body: JSON.stringify(loginData),
+    })
+      .then((res) => res.json())
+      .then((result) => {
+        if (result.token) {
+          history.replace(DOCUMENTATION_PATH);
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
 
   return (
     <form onSubmit={onSubmit}>
       <div className="field">
-        <EmailInput name="userEmail" />
+        <EmailInput name="email" />
       </div>
       <div className="field">
-        <PasswordInput name="userPassword" />
+        <PasswordInput name="password" />
       </div>
       <div className="field">
         <p className="control">

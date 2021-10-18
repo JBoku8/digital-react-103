@@ -34,6 +34,7 @@ export function PasswordInput({ name }) {
         name={name}
         value={value}
         autoComplete="new-password"
+        required
         onChange={({ target }) => setValue(target.value)}
       />
       <span className="icon is-small is-left">
