@@ -1,10 +1,10 @@
-import { useHistory } from "react-router-dom";
+import { useContext } from "react";
 import { EmailInput } from "../../atoms/EmailInput";
 import { PasswordInput } from "../../atoms/PasswordInput";
-import { DOCUMENTATION_PATH } from "../../constants/routes";
+import { AuthContext } from "../../providers/AuthProvider";
 
 export const LoginForm = () => {
-  const history = useHistory();
+  const { logIn } = useContext(AuthContext);
 
   const onSubmit = (event) => {
     event.preventDefault();
@@ -27,7 +27,7 @@ export const LoginForm = () => {
       .then((res) => res.json())
       .then((result) => {
         if (result.token) {
-          history.replace(DOCUMENTATION_PATH);
+          logIn(result.token);
         }
       })
       .catch((error) => {
