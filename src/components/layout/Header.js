@@ -1,8 +1,37 @@
+import { useEffect } from "react";
 import { NavLink, Link } from "react-router-dom";
-
 import * as route from "../../constants/routes";
+import { useAuthContext } from "../../providers/AuthProvider";
 
 export function Header() {
+  const { loggedIn, logOut } = useAuthContext();
+
+  useEffect(() => {
+    console.log("HEADER RENDERING");
+  }, [loggedIn]);
+
+  const renderGuestLinks = () => {
+    return (
+      <div className="buttons">
+        <NavLink className="button is-primary" to={route.REGISTER_PATH}>
+          <strong>Register</strong>
+        </NavLink>
+        <NavLink className="button is-light" to={route.LOGIN_PATH}>
+          Log in
+        </NavLink>
+      </div>
+    );
+  };
+  const renderUserLinks = () => {
+    return (
+      <div className="buttons">
+        <button className="button is-primary" onClick={logOut}>
+          <strong>Log Out</strong>
+        </button>
+      </div>
+    );
+  };
+
   return (
     <div className="columns mb-3">
       <div className="column is-full">
@@ -53,17 +82,7 @@ export function Header() {
 
             <div className="navbar-end">
               <div className="navbar-item">
-                <div className="buttons">
-                  <NavLink
-                    className="button is-primary"
-                    to={route.REGISTER_PATH}
-                  >
-                    <strong>Register</strong>
-                  </NavLink>
-                  <NavLink className="button is-light" to={route.LOGIN_PATH}>
-                    Log in
-                  </NavLink>
-                </div>
+                {loggedIn ? renderUserLinks() : renderGuestLinks()}
               </div>
             </div>
           </div>
