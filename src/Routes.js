@@ -1,7 +1,7 @@
-import { Switch, Route } from "react-router";
-import { Home, LoginPage, RegisterPage, ProtectedPage } from "./pages";
-import { SecureComponent } from "./atoms/SecureComponent";
-import * as route from "./constants/routes";
+import { Switch, Route } from 'react-router';
+import { Home, LoginPage, RegisterPage, ProtectedPage } from './pages';
+import { SecureComponent } from './atoms/SecureComponent';
+import * as route from './constants/routes';
 
 export function Routes() {
   return (

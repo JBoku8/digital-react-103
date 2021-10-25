@@ -1,12 +1,12 @@
-import { useContext } from "react";
-import { EmailInput } from "../../atoms/EmailInput";
-import { PasswordInput } from "../../atoms/PasswordInput";
-import { AuthContext } from "../../providers/AuthProvider";
+import { useContext } from 'react';
+import { EmailInput } from '../../atoms/EmailInput';
+import { PasswordInput } from '../../atoms/PasswordInput';
+import { AuthContext } from '../../providers/AuthProvider';
 
 export const LoginForm = () => {
   const { logIn } = useContext(AuthContext);
 
-  const onSubmit = (event) => {
+  const onSubmit = event => {
     event.preventDefault();
 
     const fd = new FormData(event.target);
@@ -17,20 +17,20 @@ export const LoginForm = () => {
     }
 
     fetch(`${process.env.REACT_APP_API_URL}/login`, {
-      method: "POST",
+      method: 'POST',
       headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
+        'Content-Type': 'application/json',
+        Accept: 'application/json',
       },
       body: JSON.stringify(loginData),
     })
-      .then((res) => res.json())
-      .then((result) => {
+      .then(res => res.json())
+      .then(result => {
         if (result.token) {
           logIn(result.token);
         }
       })
-      .catch((error) => {
+      .catch(error => {
         console.log(error);
       });
   };

@@ -1,11 +1,11 @@
-import PropTypes from "prop-types";
+import PropTypes from 'prop-types';
 
-import { logGroup } from "../../helpers/logger";
-import { formatUser } from "../../helpers/user";
-import { User as UserModel } from "../../models/user.model";
+import { logGroup } from '../../helpers/logger';
+import { formatUser } from '../../helpers/user';
+import { User as UserModel } from '../../models/user.model';
 
 export const User = ({ user, title }) => {
-  logGroup(user, "USER COMPONENT");
+  logGroup(user, 'USER COMPONENT');
 
   return (
     <>
@@ -19,7 +19,7 @@ export const User = ({ user, title }) => {
 }; // named export
 
 User.defaultProps = {
-  user: new UserModel("Missing firstName", "Missing lastName"),
+  user: new UserModel('Missing firstName', 'Missing lastName'),
 };
 
 User.propTypes = {

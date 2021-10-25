@@ -1,8 +1,8 @@
-import React from "react";
-import { Header, Footer } from "./components/layout";
-import { Routes } from "./Routes";
+import React from 'react';
+import { Header, Footer } from './components/layout';
+import { Routes } from './Routes';
 
-import "./App.css";
+import './App.css';
 
 function App() {
   return (
