@@ -1,13 +1,13 @@
-import { useEffect } from "react";
-import { NavLink, Link } from "react-router-dom";
-import * as route from "../../constants/routes";
-import { useAuthContext } from "../../providers/AuthProvider";
+import { useEffect } from 'react';
+import { NavLink, Link } from 'react-router-dom';
+import * as route from '../../constants/routes';
+import { useAuthContext } from '../../providers/AuthProvider';
 
 export function Header() {
   const { loggedIn, logOut } = useAuthContext();
 
   useEffect(() => {
-    console.log("HEADER RENDERING");
+    console.log('HEADER RENDERING');
   }, [loggedIn]);
 
   const renderGuestLinks = () => {

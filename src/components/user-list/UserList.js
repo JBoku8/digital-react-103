@@ -1,5 +1,5 @@
-import { User } from "./User";
-import { dummyData } from "../../helpers/user";
+import { User } from './User';
+import { dummyData } from '../../helpers/user';
 
 export function UserList() {
   return (

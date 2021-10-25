@@ -1,12 +1,12 @@
-import { EmailInput } from "../../atoms/EmailInput";
-import { PasswordInput } from "../../atoms/PasswordInput";
+import { EmailInput } from '../../atoms/EmailInput';
+import { PasswordInput } from '../../atoms/PasswordInput';
 
 export const RegisterForm = () => {
   //   useEffect(() => {
   //     console.log("ყოველთვის ამოქმედებული");
   //   });
 
-  const onSubmit = (event) => {
+  const onSubmit = event => {
     event.preventDefault();
 
     const fd = new FormData(event.target);

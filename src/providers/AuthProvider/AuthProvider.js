@@ -1,13 +1,13 @@
-import React, { useState, useContext } from "react";
-import { useHistory } from "react-router-dom";
+import React, { useState, useContext } from 'react';
+import { useHistory } from 'react-router-dom';
 
-import { AUTH_TOKEN } from "../../constants/constants";
-import { itemExists, removeItem, saveItem } from "../../helpers/localStorage";
-import { DOCUMENTATION_PATH } from "../../constants/routes";
+import { AUTH_TOKEN } from '../../constants/constants';
+import { itemExists, removeItem, saveItem } from '../../helpers/localStorage';
+import { DOCUMENTATION_PATH } from '../../constants/routes';
 
 export const AuthContext = React.createContext(null);
 
-AuthContext.displayName = "AuthContext";
+AuthContext.displayName = 'AuthContext';
 
 export const AuthProvider = ({ children }) => {
   const [loggedIn, setLoggedIn] = useState(() => itemExists(AUTH_TOKEN));
@@ -18,7 +18,7 @@ export const AuthProvider = ({ children }) => {
     setLoggedIn(false);
   };
 
-  const logIn = (token) => {
+  const logIn = token => {
     saveItem(AUTH_TOKEN, token);
     setLoggedIn(true);
     history.replace(DOCUMENTATION_PATH);
@@ -41,7 +41,7 @@ export const useAuthContext = () => {
   const value = useContext(AuthContext);
 
   if (!value) {
-    throw new Error("Auth Context Provider is not defined");
+    throw new Error('Auth Context Provider is not defined');
   }
   return value;
 };

@@ -1,9 +1,9 @@
-import { useState, useEffect } from "react";
-import PropTypes from "prop-types";
-import { MIN_EMAIL_VALUE } from "../../constants/validation";
+import { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
+import { MIN_EMAIL_VALUE } from '../../constants/validation';
 
 export function EmailInput({ name }) {
-  const [value, setValue] = useState("");
+  const [value, setValue] = useState('');
   const [hasError, setHasError] = useState(false);
 
   useEffect(() => {
@@ -15,11 +15,11 @@ export function EmailInput({ name }) {
   }, [value]);
 
   const renderClassName = () => {
-    let className = "input ";
+    let className = 'input ';
     if (hasError && value) {
-      className += "is-danger";
+      className += 'is-danger';
     } else if (!hasError && value) {
-      className += "is-success";
+      className += 'is-success';
     }
 
     return className;
@@ -57,7 +57,7 @@ export function EmailInput({ name }) {
 }
 
 EmailInput.defaultProps = {
-  name: "email",
+  name: 'email',
 };
 
 EmailInput.propTypes = {
