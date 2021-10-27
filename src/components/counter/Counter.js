@@ -1,25 +1,19 @@
-import { useState } from 'react';
+import { useCallback } from 'react';
 import PropTypes from 'prop-types';
 import { CounterValue } from './CounterValue';
+import CounterAction from './CounterAction';
 import CounterTitle from './CounterTitle';
+import { useLocalStorage } from '../../hooks';
 
 export function Counter({ initialValue }) {
-  const [count, setCount] = useState(initialValue);
+  const [count, setCount] = useLocalStorage('counter', initialValue);
 
-  // const addNumber = () => {
-  //   setCount(count + 1);
-  // };
-
-  // const subtractNumber = () => {
-  //   setCount(count - 1);
-  // };
-
-  const resetNumber = () => {
+  const resetNumber = useCallback(() => {
     setCount(0);
-  };
+  }, [setCount]);
 
   const handleClick = value => {
-    setCount(count + value);
+    setCount(count => count + value);
   };
 
   console.log('COUNTER RE RENDER...');
@@ -29,22 +23,13 @@ export function Counter({ initialValue }) {
       <CounterTitle demo="string" number={78} />
       <CounterValue value={count} />
 
-      {/* <div className="column">
-        <button className="button is-primary" onClick={addNumber}>
-          +1
-        </button>
-        <button className="button is-grey mx-2" onClick={resetNumber}>
-          0
-        </button>
-        <button className="button is-warning" onClick={subtractNumber}>
-          -1
-        </button>
-      </div> */}
       <div className="column">
+        <CounterAction label="RESET" onClick={resetNumber} />
         <button className="button is-link" onClick={() => handleClick(10)}>
           +10
         </button>
-        <button className="button is-link" onClick={() => handleClick(5)}>
+
+        {/* <button className="button is-link" onClick={() => handleClick(5)}>
           +5
         </button>
         <button className="button is-danger mx-2" onClick={resetNumber}>
@@ -55,7 +40,7 @@ export function Counter({ initialValue }) {
         </button>
         <button className="button is-info" onClick={() => handleClick(-10)}>
           -10
-        </button>
+        </button> */}
       </div>
     </div>
   );
