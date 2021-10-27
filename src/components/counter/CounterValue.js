@@ -1,5 +1,5 @@
 export const CounterValue = ({ value }) => {
-  console.log('COUNTER VALUE RE RENDER...');
+  // console.log('COUNTER VALUE RE RENDER...');
 
   return (
     <div className="column">
