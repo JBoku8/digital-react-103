@@ -5,6 +5,8 @@ import CounterAction from './CounterAction';
 import CounterTitle from './CounterTitle';
 import { useLocalStorage } from '../../hooks';
 
+import styles from './Counter.module.css';
+
 export function Counter({ initialValue }) {
   const [count, setCount] = useLocalStorage('counter', initialValue);
 
@@ -25,7 +27,10 @@ export function Counter({ initialValue }) {
 
       <div className="column">
         <CounterAction label="RESET" onClick={resetNumber} />
-        <button className="button is-link" onClick={() => handleClick(10)}>
+        <button
+          className={`button is-link ${styles['custom-style']}`}
+          onClick={() => handleClick(10)}
+        >
           +10
         </button>
 

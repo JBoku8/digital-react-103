@@ -3,6 +3,8 @@ import { EmailInput } from '../../atoms/EmailInput';
 import { PasswordInput } from '../../atoms/PasswordInput';
 import { AuthContext } from '../../providers/AuthProvider';
 
+import styles from './LoginForm.module.css';
+
 export const LoginForm = () => {
   const { logIn } = useContext(AuthContext);
 
@@ -37,6 +39,7 @@ export const LoginForm = () => {
 
   return (
     <form onSubmit={onSubmit}>
+      <h2 className={styles.title}>Style TItle</h2>
       <div className="field">
         <EmailInput name="email" />
       </div>
