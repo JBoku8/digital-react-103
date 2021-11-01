@@ -1,5 +1,6 @@
 import { EmailInput } from '../../atoms/EmailInput';
 import { PasswordInput } from '../../atoms/PasswordInput';
+import css from './RegisterForm.module.css';
 
 export const RegisterForm = () => {
   //   useEffect(() => {
@@ -23,6 +24,8 @@ export const RegisterForm = () => {
 
   return (
     <form onSubmit={onSubmit}>
+      <h2 className={css.title}>Style TItle</h2>
+
       <div className="field">
         <EmailInput name="userEmail" />
       </div>

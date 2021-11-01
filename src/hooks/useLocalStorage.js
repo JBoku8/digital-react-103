@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useCallback } from 'react';
 
 import { getItem, saveItem } from '../helpers/localStorage';
 
@@ -14,16 +14,18 @@ export const useLocalStorage = (key, initialValue) => {
     }
   });
 
-  const setValue = newValue => {
-    // console.log('COUNTER CHANGE', newValue);
-    try {
-      const valueToSet =
-        newValue instanceof Function ? newValue(storedValue) : newValue;
+  const setValue = useCallback(
+    newValue => {
+      try {
+        const valueToSet =
+          newValue instanceof Function ? newValue(storedValue) : newValue;
 
-      setStoreValue(valueToSet);
-      saveItem(key, valueToSet);
-    } catch (error) {}
-  };
+        setStoreValue(valueToSet);
+        saveItem(key, valueToSet);
+      } catch (error) {}
+    },
+    [key, storedValue]
+  );
 
   return [storedValue, setValue];
 };
