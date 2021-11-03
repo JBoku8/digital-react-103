@@ -2,13 +2,14 @@ import { useContext } from 'react';
 import { EmailInput } from '../../atoms/EmailInput';
 import { PasswordInput } from '../../atoms/PasswordInput';
 import { AuthContext } from '../../providers/AuthProvider';
+import { loginAsync } from '../../services/auth.service';
 
 import styles from './LoginForm.module.css';
 
 export const LoginForm = () => {
   const { logIn } = useContext(AuthContext);
 
-  const onSubmit = event => {
+  const onSubmit = async event => {
     event.preventDefault();
 
     const fd = new FormData(event.target);
@@ -18,23 +19,8 @@ export const LoginForm = () => {
       loginData[inputName] = value;
     }
 
-    fetch(`${process.env.REACT_APP_API_URL}/login`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        Accept: 'application/json',
-      },
-      body: JSON.stringify(loginData),
-    })
-      .then(res => res.json())
-      .then(result => {
-        if (result.token) {
-          logIn(result.token);
-        }
-      })
-      .catch(error => {
-        console.log(error);
-      });
+    const result = await loginAsync(loginData);
+    logIn(result.token);
   };
 
   return (
