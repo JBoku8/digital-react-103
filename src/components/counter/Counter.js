@@ -4,6 +4,7 @@ import { CounterValue } from './CounterValue';
 import CounterAction from './CounterAction';
 import CounterTitle from './CounterTitle';
 import { useLocalStorage } from '../../hooks';
+import { Button } from '../../atoms/Button';
 
 import styles from './Counter.module.css';
 
@@ -27,12 +28,12 @@ export function Counter({ initialValue }) {
 
       <div className="column">
         <CounterAction label="RESET" onClick={resetNumber} />
-        <button
-          className={`button is-link ${styles['custom-style']}`}
+
+        <Button
+          label="+10"
+          className={`button is-link ml-1 ${styles['custom-style']}`}
           onClick={() => handleClick(10)}
-        >
-          +10
-        </button>
+        />
 
         {/* <button className="button is-link" onClick={() => handleClick(5)}>
           +5

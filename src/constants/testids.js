@@ -4,4 +4,5 @@ export const TEST_IDS = {
     hasError: 'email.hasError',
     success: 'email.success',
   },
+  button: 'button',
 };
